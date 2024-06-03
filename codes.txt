@@ -1,0 +1,405 @@
+---------- Constructor -----------
+
+
+
+
+// parameter wala
+package justapackage;
+
+public class ConstructorExample {
+	
+	private String name;
+	private int age;
+	
+	public ConstructorExample() {			//this is default
+		this.name = "This printed is a default ";
+		this.age = 18;
+	}
+	
+	public ConstructorExample(String name, int age) {		//this is para
+	this.name = name;
+	this.age = age;
+}
+
+public void displaymessage() {
+	System.out.println("Name : " + name);
+	System.out.println("Age: " + age);
+}
+
+public static void main(String[] args) {
+
+	ConstructorExample defaultt = new ConstructorExample();
+	
+	ConstructorExample para = new ConstructorExample("Rohit",20);
+	
+	
+	
+	defaultt.displaymessage();
+	
+	para.displaymessage();
+}
+	
+
+}
+
+
+
+
+------------ inheritance -----------
+
+
+
+ai.java
+	package miniinheritance;
+	public class ai {
+	public void myai() {
+	System.out.println("AI's under tony\n");
+	}
+	}
+
+friday.java
+	package miniinheritance;
+	public class Friday extends ai {
+	public void iamfriday() {
+	System.out.println("Hello I'm Friday\n");
+	}
+	}
+
+jarvis.java
+	package miniinheritance;
+	public class Jarvis extends ai {
+	public void iamjarvis() {
+	System.out.println("Hello I'm Jarvis\n");
+	}
+	}
+
+
+tony.java
+	package miniinheritance;
+	public class Tony {
+	public static void main(String[] args) {
+	Friday myai = new Friday();
+	myai.myai();
+	myai.iamfriday();
+	Jarvis mybro = new Jarvis();
+	mybro.myai();
+	mybro.iamjarvis();
+	}
+	}
+
+
+
+----------  interface  -------------
+
+
+
+
+
+// create interface called interface.java
+
+	package miniinterface;	
+	public interface Interface {
+	    // Method signature (declaration)
+	    void showMessage(String message);
+	    
+	    // Constant declaration
+	    int MAX_COUNT = 100;
+	}
+
+//create class as InterfaceImplementation.java
+
+	package miniinterface;
+	public class InterfaceImplementation implements Interface {
+	public static void main(String[] args) {
+	InterfaceImplementation obj = new InterfaceImplementation();
+	obj.showMessage("Hello, Interface!");
+	System.out.println("MAX_COUNT value: " + Interface.MAX_COUNT);
+	}
+	
+	// Implementing the showMessage method
+	@Override
+	public void showMessage(String message) {
+	System.out.println("Message from Interface: " + message);
+	}
+	}
+
+
+
+
+--------- Polymorphism ------------
+
+
+
+
+
+	package minipolymorphism;
+	
+	class Animal {
+	    // Method overriding
+	    public void sound() {
+	        System.out.println("Animal makes a sound");
+	    }
+	
+	    // Method overloading
+	    public void eat() {
+	        System.out.println("Animal eats food");
+	    }
+	
+	    public void eat(String food) {
+	        System.out.println("Animal eats " + food);
+	    }
+	}
+	
+	class Dog extends Animal {
+	    // Method overriding
+	    @Override
+	    public void sound() {
+	        System.out.println("Dog barks");
+	    }
+	
+	    // Method overloading
+	    public void eat() {
+	        System.out.println("Dog eats bones");
+	    }
+	}
+	
+	public class Main {
+	    public static void main(String[] args) {
+	        Animal animal = new Dog();
+	
+	        // Calls overridden sound() method of Dog
+	        animal.sound();
+	
+	        // Calls overloaded eat() method of Dog
+	        animal.eat();
+	
+	        // Calls overloaded eat(String) method of Animal
+	        animal.eat("meat");
+	    }
+	}
+	
+	
+	
+
+
+--------- Abstraction --------
+
+
+
+
+//create shape file by checking abstract box
+	package miniabstraction;
+	public abstract class Shape {
+	public abstract double area();
+	public abstract double perimeter();
+	}
+
+
+//create rectange file extending shape (superclass as shape)
+	package miniabstraction;
+	public class Rectangle extends Shape {
+	private double length;
+	private double width;
+	public Rectangle(double length, double width) {
+	this.length = length;
+	this.width = width;
+	}
+	public double area() {
+	return length * width;
+	}
+	public double perimeter() {
+	return 2 * (length + width);
+	}
+	}
+
+//create Main file
+	package miniabstraction;
+	public class Main {
+	public static void main(String[] args) {
+	Rectangle rectangle = new Rectangle(5, 4);
+	System.out.println("Area of rectangle: " + rectangle.area());
+	System.out.println("Perimeter of rectangle: " + rectangle.perimeter());
+	}
+	}
+
+
+
+------------- encapsulation -------------
+
+//create a file Employee
+
+	package miniencapsulation;
+	public class Employee {		
+               private String name;		
+	private double salary;	 
+	public Employee(String name, double salary) {
+	this.name = name;
+	this.salary = salary;
+	}    
+	public String getName() {
+	return name;
+	}
+	public void setName(String name) {
+	this.name = name;
+	}	    
+	public double getSalary() {
+	return salary;
+	}
+	public void setSalary(double salary) {
+	this.salary = salary;
+	}
+	}
+
+
+//create main file
+
+	package miniencapsulation;
+	public class Main {
+	public static void main(String[] args) {
+	Employee emp = new Employee("John", 50000);
+	System.out.println("Employee name: " + emp.getName());
+	System.out.println("Employee salary: " + emp.getSalary()); 
+	emp.setName("Alice");
+	emp.setSalary(60000);
+	System.out.println("Updated employee name: " + emp.getName());
+	System.out.println("Updated employee salary: " + emp.getSalary());
+	}
+	}
+
+	
+	
+	
+
+------------------- Exception handling ---------------------
+
+
+
+//create file Main
+
+	package minihandling;
+	public class Main {
+	public static void main(String[] args) {
+	try {
+	int result = divide(10, 2); //change this to 2 and 0 to should the exception handling 
+	System.out.println("Result: " + result);
+	} catch (ArithmeticException e) {
+	System.out.println("Error: Division by zero");
+	}
+	}  
+	public static int divide(int dividend, int divisor) {
+	return dividend / divisor;
+	}
+	}
+
+
+
+
+
+
+
+
+
+
+------------- multi threading -----------
+
+package minithread;
+
+public class MyThread extends Thread {
+    
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Thread: " + Thread.currentThread().getId() + " Count: " + i);
+            try {
+                Thread.sleep(1000); // Simulate some work being done
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        MyThread thread1 = new MyThread();
+        MyThread thread2 = new MyThread();
+        thread1.start();
+        thread2.start();
+    }
+}
+
+
+
+
+----------- JDBC -------------------
+
+	CREATE DATABASE LibraryDB;
+	USE LibraryDB;
+	CREATE TABLE Books (
+	    id INT PRIMARY KEY AUTO_INCREMENT,
+	    title VARCHAR(100),
+	    author VARCHAR(100),
+	    year INT
+	);
+
+
+package minijdbc;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class LibraryManagement {
+
+    // JDBC URL, username, and password of MySQL server
+    private static final String URL = "jdbc:mysql://localhost:3306/LibraryDB";
+    private static final String USER = "root"; // Change to your MySQL username
+    private static final String PASSWORD = "root"; // Change to your MySQL password
+
+    // JDBC variables for opening and managing connection
+    private static Connection connection;
+    private static Statement statement;
+    private static ResultSet resultSet;
+
+    public static void main(String[] args) {
+        try {
+            // Opening database connection
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // Creating statement
+            statement = connection.createStatement();
+
+            // Inserting a new book
+            String insertQuery = "INSERT INTO Books (title, author, year) VALUES ('The Great Gatsby', 'F. Scott Fitzgerald', 1925)";
+            statement.executeUpdate(insertQuery);
+
+            // Querying the database
+            String selectQuery = "SELECT * FROM Books";
+            resultSet = statement.executeQuery(selectQuery);
+
+            // Printing the results
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String title = resultSet.getString("title");
+                String author = resultSet.getString("author");
+                int year = resultSet.getInt("year");
+                System.out.println("ID: " + id + ", Title: " + title + ", Author: " + author + ", Year: " + year);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Closing the connection
+            try { if (resultSet != null) resultSet.close(); } catch (Exception e) { e.printStackTrace(); }
+            try { if (statement != null) statement.close(); } catch (Exception e) { e.printStackTrace(); }
+            try { if (connection != null) connection.close(); } catch (Exception e) { e.printStackTrace(); }
+        }
+    }
+}
+
+
+
+
+
+	
+
+
+
+
